@@ -1,7 +1,10 @@
 <!-- transformation.xslt -->
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                  xmlns:xalan="http://xml.apache.org/xalan"
-                  xmlns:math="xalan://java.lang.Math">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	exclude-result-prefixes="#all"
+	version="2.0">
+    
     <!-- Identity template: copy all elements and attributes as-is -->
     <xsl:template match="@* | node()">
         <xsl:copy>
@@ -12,28 +15,20 @@
     <!-- Match the 'id' elements to transform them -->
     <xsl:template match="id">
         <xsl:variable name="cityName" select="../city"/>
-        <xsl:value-of select="concat($cityName, '-', .)"/>
+        <id><xsl:value-of select="concat($cityName, '-', .)"/></id>
     </xsl:template>
 
-    <!-- Add the 'date' element with a random date to each 'worker' element -->
     <xsl:template match="worker">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
-            <date><xsl:value-of select="generate-random-date()"/></date>
+            <date>2023-08-08</date>
         </xsl:copy>
     </xsl:template>
 
     <!-- Replace spaces in city names with '_' -->
     <xsl:template match="city">
-        <xsl:value-of select="translate(., ' ', '_')"/>
+        <city><xsl:value-of select="translate(., ' ', '_')"/></city>
     </xsl:template>
 
-    <!-- Function to generate a random date -->
-    <xsl:function name="generate-random-date">
-        <xsl:variable name="year" select="floor(2000 + (2000 * math:random()))"/>
-        <xsl:variable name="month" select="format-number(floor(1 + (12 * math:random())), '00')"/>
-        <xsl:variable name="day" select="format-number(floor(1 + (30 * math:random())), '00')"/>
-        <xsl:value-of select="concat($year, '-', $month, '-', $day)"/>
-    </xsl:function>
 </xsl:stylesheet>
 
