@@ -1,5 +1,7 @@
 <!-- transformation.xslt -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                  xmlns:xalan="http://xml.apache.org/xalan"
+                  xmlns:math="xalan://java.lang.Math">
     <!-- Identity template: copy all elements and attributes as-is -->
     <xsl:template match="@* | node()">
         <xsl:copy>
@@ -28,9 +30,9 @@
 
     <!-- Function to generate a random date -->
     <xsl:function name="generate-random-date">
-        <xsl:variable name="year" select="floor(2000 + (2000 * rand:random()))"/>
-        <xsl:variable name="month" select="format-number(floor(1 + (12 * rand:random())), '00')"/>
-        <xsl:variable name="day" select="format-number(floor(1 + (30 * rand:random())), '00')"/>
+        <xsl:variable name="year" select="floor(2000 + (2000 * math:random()))"/>
+        <xsl:variable name="month" select="format-number(floor(1 + (12 * math:random())), '00')"/>
+        <xsl:variable name="day" select="format-number(floor(1 + (30 * math:random())), '00')"/>
         <xsl:value-of select="concat($year, '-', $month, '-', $day)"/>
     </xsl:function>
 </xsl:stylesheet>
