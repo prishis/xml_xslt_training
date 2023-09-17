@@ -1,0 +1,29 @@
+<!-- workers-salary.xslt -->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:variable name="highSalary" select="55000"/>
+    <xsl:template match="/">
+        <html>
+            <body>
+                <h2>Workers with High Salary</h2>
+                <ul>
+                    <xsl:apply-templates select="workers/worker[salary &gt;= $highSalary]"/>
+                </ul>
+                <h2>Workers with Low Salary</h2>
+                <ul>
+                    <xsl:apply-templates select="workers/worker[salary &lt;= $highSalary]"/>
+                </ul>
+            </body>
+        </html>
+    </xsl:template>
+    
+    <xsl:template match="worker[salary &lt;= $highSalary]">
+        <li>
+            <xsl:value-of select="name"/> - <xsl:value-of select="salary"/>
+        </li>
+    </xsl:template>
+        <xsl:template match="worker[salary &gt;= $highSalary]">
+        <li>
+            <xsl:value-of select="name"/> higher <xsl:value-of select="salary"/>
+        </li>
+    </xsl:template>
+</xsl:stylesheet>
