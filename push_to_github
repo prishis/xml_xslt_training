@@ -1,0 +1,8 @@
+How to push file in git hub
+git status
+under the folder - git add file name
+git status
+above command will add the changes on your folder
+below command to push the changes in git hub
+git commit -m (massage) "add comment"
+check in git you will get the changes 
