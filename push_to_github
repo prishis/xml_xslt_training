@@ -5,4 +5,5 @@ git status
 above command will add the changes on your folder
 below command to push the changes in git hub
 git commit -m (massage) "add comment"
+Final step- git push origin main 
 check in git you will get the changes 
