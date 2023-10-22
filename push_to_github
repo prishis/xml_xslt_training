@@ -7,3 +7,22 @@ below command to push the changes in git hub
 git commit -m (massage) "add comment"
 Final step- git push origin main 
 check in git you will get the changes 
+
+***************************************************
+
+How to create New Repository 
+
+1-go to git hub - in profile create new reporsitory with name 
+2- select HTTPS and copy the link 
+3- on terminal automate the folder in desktop
+4- command- git clone paste the link 
+5- command ls (list- you will get the all folder let)
+6- cd folder name
+7-to create file under the folder 
+   Command- touch give file name.txt
+8- you will get folder and file on desktop n
+9- can push to git 
+   git add Trial_File.txt 
+   git commit -m "comment"
+   git push origin main
+10- follow the instruction also 
